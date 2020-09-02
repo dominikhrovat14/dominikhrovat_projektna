@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tri v vrsto</title>
+<meta charset="UTF-8">
+<link href="../static/main_style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1>Tri V Vrsto</h1>
+
+<style>
+.konec_ {
+	font-size: 120px;
+	color: white;
+	text-align: center;
+}
+</style>
+
+        <form id="form-id" action="/Turn" method="post">
+          <div class="box">
+            <div class="board">
+                <div id="1" class="block" onclick="submitForm(this.id);"><h2>{{place_1}}</h2></div>
+                <div id="2" class="block" onclick="submitForm(this.id);"><h2>{{place_2}}</h2></div>
+                <div id="3" class="block" onclick="submitForm(this.id);"><h2>{{place_3}}</h2></div>
+                <div id="4" class="block" onclick="submitForm(this.id);"><h2>{{place_4}}</h2></div>
+                <div id="5" class="block" onclick="submitForm(this.id);"><h2>{{place_5}}</h2></div>
+                <div id="6" class="block" onclick="submitForm(this.id);"><h2>{{place_6}}</h2></div>
+                <div id="7" class="block" onclick="submitForm(this.id);"><h2>{{place_7}}</h2></div>
+                <div id="8" class="block" onclick="submitForm(this.id);"><h2>{{place_8}}</h2></div>
+                <div id="9" class="block" onclick="submitForm(this.id);"><h2>{{place_9}}</h2></div>
+             </div>
+          </div>
+		  
+		  
+		   
+          <input id="setValue" name="myTurn" type="hidden" value=""/>
+        </form>
+		
+<form id="form2_" action="/Konec" method="get">		
+ <div id="konec" class="konec_">{{place_10}}</div>   
+</form>
+        
+
+        <script type="text/javascript">
+		   function refreshPage(){
+				window.location.reload();
+} 
+		
+		
+          var globalCheck = true;
+          var p = document.getElementById("alert");
+          p.style.opacity = 0;
+
+          function checkObj(obj){
+            if (obj.textContent == 'X' || obj.textContent == 'O'){
+              obj.style.background = '#AB2217';
+              globalCheck = false;
+              p.style.opacity = 1;
+            } else {
+              obj.style.background = '#228B22';
+              globalCheck = true;
+            };
+          };
+
+          function setColor(obj){
+            if (obj.style.background != '#222'){
+              obj.style.background = '#222';
+              p.style.opacity = 0;
+            };
+          };
+
+          function submitForm(id){
+            if (globalCheck){
+              var form = document.getElementById("form-id");
+              document.getElementById("setValue").value = id;
+              form.submit();
+            };
+          };
+        </script>
+
+
+<form  action="/Reset" method="get">
+		<div class="box">
+		   <button type="submit" onClick="refreshPage()">Ponovni začetek</button>
+		</div>
+</form>
+</body>
+</html>

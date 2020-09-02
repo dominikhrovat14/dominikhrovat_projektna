@@ -30,7 +30,7 @@ def Turn():
     def winner(player):
         set_winner = GL.game_loop(player)
         if GL.winner() == "O":
-            print(" ")
+            return None
             
             
     winner(int(float(request.forms.get('myTurn'))))

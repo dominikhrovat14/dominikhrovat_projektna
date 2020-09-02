@@ -52,10 +52,7 @@ def winner():
 def prosto_mesto(pos):
     if board[pos] == " ":
         return True
-    
-
-        
-#PREGLEJ ZA POPRAVKE
+   
     
 def comp_win_place(token, board):
     for i in range(0,9,3):
@@ -135,7 +132,6 @@ def comp_input(comp_token):
         break
 
 def game_loop(my_turn):
-    global turns_remaining
     global turn
     while check_win(board) != "X" and check_win(board) != "O" :
         if turn % 2 == 0:
